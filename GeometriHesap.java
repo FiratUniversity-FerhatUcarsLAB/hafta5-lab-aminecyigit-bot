@@ -143,3 +143,94 @@ public class GeometriHesap {
         input.close();
     }
 }
+
+
+package v1;
+
+import java.util.Scanner;
+
+public class GeometrikHesap {
+    final static double pi = 3.14159;
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+       //kare
+        System.out.printf("\nKenar uzunluğu giriniz: ");
+        double uzunluk = input.nextDouble();
+        double kare_alan = calculateSquareArea(uzunluk);
+        double kare_cevre = calculateSquarePerimeter(uzunluk);
+        System.out.printf("Kare alan: " + calculateSquareArea(uzunluk));
+        System.out.printf("\nKarenin çevresi: " + calculateSquarePerimeter(uzunluk));
+        
+        //dikdörtgen
+        System.out.printf("\n\nKısa kenar uzunluğunu giriniz: ");
+        double kisa_kenar = input.nextDouble();
+        System.out.printf("Uzun kenar uzunluğunu giriniz: ");
+        double uzun_kenar = input.nextDouble();
+        double dikdortgen_cevre = calculateTrianglePerimeter(uzun_kenar,kisa_kenar);
+        double dikdörtgen_alan = calculateRectangleArea(kisa_kenar, kare_alan);
+        System.out.printf("\nDikdörtgen alanı: " +calculateRectangleArea(uzun_kenar,kisa_kenar));
+        System.out.printf("\nDikdörtgen çevre: " +calculateTrianglePerimeter(uzun_kenar, kisa_kenar));
+        
+        // daire
+        System.out.printf("\nYarıçapı(r) giriniz: ");
+        double r = input.nextDouble();
+        double daire_alani = calculateCircleArea(r);
+        double daire_cevre = calculateCircleCircumference(r);
+        System.out.printf("\nDaire Alan: " + calculateCircleArea(r));
+        System.out.printf("\nDaire Çevre: " + calculateCircleCircumference(r));
+        
+        //üçgen
+        System.out.printf("\nTaban uzunluğunu giriniz: ");
+        double taban = input.nextDouble();
+        System.out.printf("Yüksekliği giriniz: ");
+        double yekseklik = input.nextDouble();
+        System.out.printf("Birinci Kenar uzunluğu giriniz: ");
+        double uzunluk_a = input.nextDouble();
+        System.out.printf("İkinci Kenar uzunluğu giriniz: ");
+        double uzunluk_b = input.nextDouble();
+        System.out.printf("Üçüncü Kenar uzunluğu giriniz: ");
+        double uzunluk_c = input.nextDouble();
+        double ucgen_alani = calculateTriangleArea(taban,yekseklik);
+        double ucgen_cevre = calculateTrianglePerimeter(taban,yekseklik);
+        System.out.printf("Üçgen Alanı: " + calculateTriangleArea(taban,yekseklik));
+        System.out.printf("\nÜçgenin Çevresi: " + calculateTrianglePerimeter(taban,yekseklik));
+        
+    }
+    // kare alan
+    public static double calculateSquareArea(double uzunluk) {
+       double alan = Math.pow(uzunluk, 2);
+       return alan ;
+    }
+    // kare çevre
+    public static double calculateSquarePerimeter(double uzunluk) {
+        return 4 * uzunluk;
+    }
+    // dikdörtgen alan
+    public static double calculateRectangleArea(double width, double height) {
+        return width * height;
+    }
+    // dikdörtgen cevre
+    public static double calculateTrianglePerimeter(double kisa_kenar, double uzun_kenar) {
+        return 2*(kisa_kenar + uzun_kenar);
+    }
+    // daire alan
+    public static double calculateCircleArea(double r) {
+        return pi * Math.pow(r,2);
+    }
+    // daire cevre
+    public static double calculateCircleCircumference(double r) {
+        return 2 * Math.PI * r;
+    }
+    // üçgen alanı
+    public static double calculateTriangleArea(double taban, double yukseklik) {
+        return taban * yukseklik/2.0;
+    }
+    // üçgen cevre
+        public static double calculateTrianglePerimeter(double uzunluk_a, double uzunluk_b, double uzunluk_c) {
+        return uzunluk_a + uzunluk_b + uzunluk_c;
+    }
+
+
+}
+
