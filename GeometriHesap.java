@@ -1,7 +1,7 @@
 /*
- * Ad Soyad: [ADINIZI BURAYA YAZIN]
- * Ogrenci No: [OGRENCI NUMARANIZI BURAYA YAZIN]
- * Tarih: [TARIHI BURAYA YAZIN]
+ * Ad Soyad: Amine Ceren Yiğit
+ * Ogrenci No: 250541048
+ * Tarih: 7 Kasım 2025
  * Aciklama: Gorev 1 - Geometrik Sekil Hesaplayici
  * 
  * Bu program temel geometrik sekillerin alan ve
@@ -145,6 +145,8 @@ public class GeometriHesap {
 }
 
 
+
+
 package v1;
 
 import java.util.Scanner;
@@ -195,8 +197,9 @@ public class GeometrikHesap {
         double ucgen_cevre = calculateTrianglePerimeter(taban,yekseklik);
         System.out.printf("Üçgen Alanı: " + calculateTriangleArea(taban,yekseklik));
         System.out.printf("\nÜçgenin Çevresi: " + calculateTrianglePerimeter(taban,yekseklik));
-        
     }
+
+    
     // kare alan
     public static double calculateSquareArea(double uzunluk) {
        double alan = Math.pow(uzunluk, 2);
