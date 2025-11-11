@@ -124,3 +124,92 @@ public class FizikFormul {
         input.close();
     }
 }
+
+
+package v1;
+import  java.util.Scanner;
+
+public class FizikFormul {
+    // yer çekimi sabiti
+    final static double YER_CEKIMI = 9.8;
+    // hız hesabı
+    public static double calculateVelocity(double mesafe, double zaman){
+        double hiz = (mesafe/zaman);
+        return hiz;
+    }
+    // ivme hesabı
+    public static double calculateAcceleration(double hiz_degisimi, double zaman){
+        double ivme = hiz_degisimi / zaman;
+        return ivme;
+    }
+    // kuvvet hesabı
+    public static double calculateForce(double kutle, double ivme) {
+        double kuvvet = kutle*ivme;
+        return kuvvet;
+    }
+    //iş hesabı
+    public static double calculateWork(double kuvvet, double mesafe) {
+        double is = kuvvet*mesafe;
+        return is;
+    }
+    //Güç hesabı
+    public static double calculatePower(double is, double zaman) {
+        double guc = is/zaman;
+        return guc;
+    }
+    //Kinetik Enerji hesabı
+    public static double calculateKineticEnergy(double kutle, double hiz) {
+        double kinetik_enerji = 0.5 * kutle * Math.pow(hiz, 2);
+        return kinetik_enerji;
+    }
+    //Potansiyel Enerji hesabı
+    public static double calculatePotentialEnergy(double kutle, double YER_CEKIMI, double yukseklik) {
+        double potansiyel_enerji =
+        YER_CEKIMI* yukseklik * kutle;
+        return potansiyel_enerji;
+    }
+    // Momentum hesabı
+    public static double calculateMomentum(double kutle, double hiz) {
+        double momentum = kutle * hiz;
+        return momentum;
+    }
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        // kullanıcıdan veriler alalım
+        System.out.printf("\nKütleyi giriniz(kg): ");
+        double kutle = input.nextDouble();
+        System.out.printf("\nZamanı giriniz(s): ");
+        double zaman = input.nextDouble();
+        System.out.printf("\nMesafeyi giriniz(m): ");
+        double mesafe = input.nextDouble();
+        System.out.printf("\nYukseklik giriniz(m): ");
+        double yukseklik = input.nextDouble();
+        System.out.printf("\nHız Değişimini giriniz(m/s): ");
+        double hiz_degisimi = input.nextDouble();
+
+        System.out.printf("\n\n=================================== ");
+        System.out.printf("\n       HESAPLAMA SONUÇLARI          ");
+        System.out.printf("\n=================================== ");
+        System.out.printf("\n\nHIZ VE HAREKET:");
+        System.out.printf("\nHız (v=s/t)             :  %.2f m/s" , calculateVelocity(mesafe, zaman));
+        System.out.printf("\nİvme (a=Δv/t)           :  %.2f m/s²" , calculateAcceleration(hiz_degisimi, zaman));
+        System.out.printf("\n\nKUVVET VE İŞ:");
+        double ivme = calculateAcceleration(hiz_degisimi,zaman);
+        System.out.printf("\nKuvvet (F=m*a)          :  %.2f N"  , calculateForce(kutle,ivme));
+        double kuvvet = calculatePower(ivme, kutle);
+        System.out.printf("\nİş (W=F*d)              :  %.2f J" , calculateWork(kuvvet,mesafe));
+        double is = calculateWork(kuvvet,mesafe);
+        System.out.printf("\nGüç(P=W/t)              :  %.2f W" , calculatePower(is,zaman));
+        System.out.printf("\n\nENERJİ");
+        double hiz = calculateVelocity(mesafe, zaman);
+        System.out.printf("\nKinetik Enerji (KE)     :  %.2f J" , calculateKineticEnergy(kutle,hiz));
+        System.out.printf("\nPotansiyel Enerji (PE)  :  %.2f J" , calculatePotentialEnergy(kutle,YER_CEKIMI,yukseklik));
+        double toplam_enerji = calculateKineticEnergy(kutle,hiz) + calculatePotentialEnergy(kutle,YER_CEKIMI,yukseklik);
+        System.out.printf("\nToplam Enerji           :  %.2f J" , toplam_enerji);
+        System.out.printf("\n\nMOMENTUM:");
+        System.out.printf("\nMomentum (p=m*v)        :  %.2f kg.m/s" , calculateMomentum(kutle,hiz));
+        System.out.printf("\n===================================");
+        input.close();
+    }
+}
